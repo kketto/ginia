@@ -1,0 +1,70 @@
+form{
+    display: flex;
+    height: 100%;
+}
+input {
+
+    border-style: solid;
+    border-width: thin;
+    border-radius: 10px 0px 0px 10px;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-size: large;
+    padding: 10px;
+
+    &:focus {
+
+        background: radial-gradient(transparent, #d1bbdc);
+    }
+}
+
+button {
+    border-style: solid;
+    border-width: thin;
+    border-radius: 0px 10px 10px 0px;
+    outline: none;
+    height: 100%;
+    background-color: #630c5b;
+    font-size: large;
+    padding: 15px;
+    color: #ff9;
+    cursor: pointer;
+}
+
+.result{
+    background-color: #e3c8e9f2;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.backdrop{
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.418);
+    left: 0;
+    z-index: -1;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    margin: 1px;
+    font-size: medium;
+}
+
+a{
+    text-decoration: none;
+    padding: 2px;
+    display: block;
+    font-weight: 600;
+    color: #331b53;
+    font-size: 18px;
+}

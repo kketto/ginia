@@ -1,0 +1,37 @@
+<div class="container">
+
+    <img [src]="movie.imageSrc" [alt]="movie.title">
+
+    <div class="info">
+        <div>
+            <p>
+                {{movie.title}}
+            </p>
+            <p>
+                {{movie.rating}}
+            </p>
+        </div>
+        <p>
+            {{movie.year}}
+        </p>
+        <p>
+            {{movie.director}}
+        </p>
+        <p>
+            {{cast}}
+        </p>
+        <p>
+            {{movie.description}}
+        </p>
+
+
+    </div>
+
+</div>
+
+<video controls>
+    <source [src]="movie.videoSrc" type="video/mp4">
+
+    Your browser does not support the video tag.
+
+</video>

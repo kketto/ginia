@@ -1,0 +1,8 @@
+<div>
+    <button class="left" (click)="onPrevious()">
+        < </button>
+            <a [routerLink]="activeSlide.path" [style.backgroundImage]="'url('+ activeSlide.src +')'">
+                <!-- <img [src]="activeSlide.src" [alt]="activeSlide.alt"> -->
+            </a>
+            <button class="right" (click)="onNext()">></button>
+</div>

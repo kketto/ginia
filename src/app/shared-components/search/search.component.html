@@ -1,0 +1,20 @@
+<form [formGroup]="form">
+
+    <input formControlName="term" type="search">
+
+    <button type="submit">Search</button>
+</form>
+
+<div class="result" *ngIf="searchedMovies?.length">
+
+    <ul>
+        <li *ngFor="let item of searchedMovies">
+            <a [routerLink]="['/movie',item.id]" (click)="onDetail()">
+                {{item.title}} - {{item.year}}
+            </a>
+        </li>
+    </ul>
+
+    <div class="backdrop" (click)="onBackdrop()"></div>
+
+</div>

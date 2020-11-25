@@ -1,0 +1,12 @@
+<div class="backdrop">
+    <div class="popup" [style.width]="width" [style.height]="height">
+        <div class="header">
+            <p>{{title}}</p>
+
+            <button type="button" (click)="onClose()">X</button>
+        </div>
+        <div class="content">
+            <ng-container #container></ng-container>
+        </div>
+    </div>
+</div>

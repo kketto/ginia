@@ -1,0 +1,34 @@
+ul {
+    width: 249px;
+    background-color: #e0d7d738;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 0;
+}
+
+
+
+li {
+    list-style-type: none;
+    margin: 1px;
+}
+
+a {
+    padding: 4px;
+    padding-left: 8px;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    color: #50248a;
+    font-weight: 600;
+    border-radius: 10px;
+
+
+    &:hover{
+        background-color: #d6cfcf69;
+    }
+
+    &.active{
+        background-color: #741fa25e;
+    }
+}

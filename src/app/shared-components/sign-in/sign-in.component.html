@@ -1,0 +1,18 @@
+<form [formGroup]="form" (submit)="onSignIn()">
+
+    <input formControlName="userName" type="text" placeholder="მომხმარებლის სახელი">
+
+    <input formControlName="password" type="password" placeholder="პაროლი">
+
+    <div class="rememberMe">
+        <label for="rememberMe">დამახსოვრება</label>
+        <input id="rememberMe" type="checkbox">
+    </div>
+
+
+    <div>
+        <a href="#">დაგავიწყდა პაროლი?</a>
+        <button type="submit">შესვლა</button>
+    </div>
+
+</form>

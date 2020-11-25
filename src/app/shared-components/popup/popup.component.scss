@@ -1,0 +1,55 @@
+.backdrop{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.479);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup{
+    width: 350px;
+    height: 250px;
+    background-color: #c7b7d0;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button{
+    margin: 5px;
+    border-radius: 50%;
+     border: none; 
+    width: 55px;
+    height: 55px;
+    padding: 0;
+    font-size: larger;
+    font-weight: bold;
+    background-color: #741fa2;
+    outline: none;
+    color: #ef00ff;
+    cursor: pointer;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+}
+
+p {
+    
+    padding-left: 25px;
+    color: #4a0072;
+    font-size: large;
+    font-weight: bold;
+}
