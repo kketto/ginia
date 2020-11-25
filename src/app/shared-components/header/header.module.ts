@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 import { SearchModule } from '../search/search.module';
 import { SignInModule } from '../sign-in/sign-in.module';
 import { HeaderComponent } from './header.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
 
 
 @NgModule({
     declarations: [
-        HeaderComponent
+        HeaderComponent,
+        UserMenuComponent
     ],
     imports: [
         CommonModule,

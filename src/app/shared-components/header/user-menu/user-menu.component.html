@@ -1,0 +1,18 @@
+<div class="avatar" (click)="onAvatar()">
+
+    <span>
+        {{userName}}
+    </span>
+
+    <img src="./assets/avatar.png" alt="avatar">
+</div>
+
+<div class="menu" *ngIf="isUserMenuVisible">
+
+    <ul>
+        <li><a routerLink="add-movie"> ფილმის დამატება</a></li>
+        <li><button type="button" (click)="onSignOut()">გასვლა</button></li>
+    </ul>
+
+
+</div>

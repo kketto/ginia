@@ -17,7 +17,7 @@ export class UserService {
     singIn(userName: string, password: string): boolean {
         if (userName === "keti" && password === "soso") {
             this.user = userName;
-            this.cookiesService.set('userName', userName, 1);
+            this.cookiesService.set('userName', userName, 10);
             // this._signedIn$.next(true);
             return true;
 

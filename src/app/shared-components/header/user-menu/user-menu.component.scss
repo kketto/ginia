@@ -1,0 +1,56 @@
+
+
+.avatar{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 15px;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+
+}
+
+span{
+    margin-right: 10px
+}
+
+.menu {
+    width:  190px;    ;
+    background-color: #630c5b;
+    position: absolute;
+    right: 0;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px 0px 10px 10px;
+    color: #fdfc98;
+}
+
+button, a{
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #ff0779;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0px;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    margin: 1px;
+    font-size: medium;
+    margin:4px;
+}

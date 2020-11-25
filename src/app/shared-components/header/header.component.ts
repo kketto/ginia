@@ -11,15 +11,7 @@ export class HeaderComponent {
 
     constructor(private popupService: PopupService, public userService: UserService) { }
 
-
-
     onSignIn(): void {
         this.popupService.openSignInPopup();
     }
-
-    onSignOut(): void {
-
-        this.userService.signOut();
-    }
-
 }

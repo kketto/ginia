@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+
+    <input formControlName="title" type="text" placeholder="სათაური">
+    <input formControlName="imageSrc" type="text" placeholder="პოსტერის ლინკი">
+    <input formControlName="videoSrc" type="text" placeholder="ვიდეოს ლინკი">
+    <input formControlName="categorieIds" placeholder="აირჩიე კატეგორია">
+    <input formControlName="year" type="number" placeholder="წელი">
+    <input formControlName="director" type="text" placeholder="რეჟისორი">
+    <input formControlName="cast" placeholder="მსახიობები">
+    <textarea formControlName="description" placeholder="აღწერა"></textarea>
+
+    <button type="submit">დამატება</button>
+
+</form>
