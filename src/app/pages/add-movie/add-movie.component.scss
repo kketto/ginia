@@ -4,3 +4,55 @@ form{
     flex-direction: column;
     align-items: center;
 }
+
+h1{
+    color: #d11c93;
+}
+
+.title {
+        margin-top: 25px;
+}
+
+
+input{
+    width: 30%;
+    height: 40px;
+    margin: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: revert;
+    padding: 5px;
+    outline-style: none;
+    border-color: #e1dbdb;
+   
+    &:focus {
+
+        background-color: #f7f0fa;
+
+    }
+}
+
+textarea {
+    width: 40%;
+    height: 95px;
+    margin-left: 110px;
+    resize: none;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: revert;
+    padding: 5px;
+    outline-style: none;
+    border-color: #e1dbdb;
+}
+
+button{
+
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    background-color: #630c5b;
+    color: #eade91;
+    font-weight: 600;
+    border-radius: 15px;
+}
+

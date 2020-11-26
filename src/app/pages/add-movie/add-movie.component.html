@@ -1,6 +1,8 @@
 <form [formGroup]="form">
 
-    <input formControlName="title" type="text" placeholder="სათაური">
+    <h1>დაამატე ფილმი</h1>
+
+    <input class="title" formControlName="title" type="text" placeholder="სათაური">
     <input formControlName="imageSrc" type="text" placeholder="პოსტერის ლინკი">
     <input formControlName="videoSrc" type="text" placeholder="ვიდეოს ლინკი">
     <input formControlName="categorieIds" placeholder="აირჩიე კატეგორია">
@@ -10,5 +12,6 @@
     <textarea formControlName="description" placeholder="აღწერა"></textarea>
 
     <button type="submit">დამატება</button>
+
 
 </form>
