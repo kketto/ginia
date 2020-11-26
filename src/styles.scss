@@ -1,7 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.ng-invalid.ng-touched{
+    border-color:#d11c93;
+    &> .ng-select-container{
+        border-color: #d11c93;
+    }
+}
+
+.ng-select{
+    height: auto;
+}
+
+.ng-select .ng-select-container{
+    border-radius: 10px;
+    min-height: 40px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #e1dbdb;
+    background-color: #f0e9f1;
+    &:focus {
+        background-color: #f7f0fa;
+    }
+}
+
 body {
     margin: 0;
-    
 }
 
 * {

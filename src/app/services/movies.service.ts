@@ -12,7 +12,7 @@ export class MoviesService {
         year: 2011,
         description: 'Super very good movie',
         rating: 9.2,
-        imageSrc: './assets/interposter.jpg',
+        imageSrc: 'http://localhost:4200/assets/interposter.jpg',
         videoSrc: 'https://s4501-l16.imovies.cc/video/imovie_hash_code/4/2017112615470346_high_geo.mp4?md5=X6kGrwj17XiKLKXDCQ8mUA&expires=1604272055&data=YTozOntzOjc6InVzZXJfaXAiO3M6MTI6IjQ2LjQ5LjgwLjE1MSI7czoxMDoidXNlcl9hZ2VudCI7czoxMTU6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS84Ni4wLjQyNDAuMTExIFNhZmFyaS81MzcuMzYiO3M6NzoicmVmZXJlciI7czoyNjoiaHR0cHM6Ly93d3cuYWRqYXJhbmV0LmNvbS8iO30=',
         categorieIds: [1, 5, 6, 7, 25]
     },
@@ -24,7 +24,7 @@ export class MoviesService {
         year: 2004,
         description: 'very good movie',
         rating: 9.2,
-        imageSrc: './assets/killposter.webp',
+        imageSrc: 'http://localhost:4200/assets/killposter.webp',
         videoSrc: '',
         categorieIds: [1, 5, 6, 7, 25]
 
@@ -37,7 +37,7 @@ export class MoviesService {
         year: 2004,
         description: 'very good movie',
         rating: 9.2,
-        imageSrc: './assets/eatpray.jpg',
+        imageSrc: 'http://localhost:4200/assets/eatpray.jpg',
         videoSrc: '',
         categorieIds: [5, 6, 7, 25]
 
@@ -50,7 +50,7 @@ export class MoviesService {
         year: 2004,
         description: 'very good movie',
         rating: 9.2,
-        imageSrc: './assets/florence.jpg',
+        imageSrc: 'http://localhost:4200/assets/florence.jpg',
         videoSrc: '',
         categorieIds: [5, 6, 7, 25]
 
@@ -63,7 +63,7 @@ export class MoviesService {
         year: 2004,
         description: 'very good movie',
         rating: 9.2,
-        imageSrc: './assets/harry.jpg',
+        imageSrc: 'http://localhost:4200/assets/harry.jpg',
         videoSrc: '',
         categorieIds: [5, 6, 7, 25]
 
@@ -76,7 +76,7 @@ export class MoviesService {
         year: 2004,
         description: 'very good movie',
         rating: 9.2,
-        imageSrc: './assets/HumanVoice.jpeg',
+        imageSrc: 'http://localhost:4200/assets/HumanVoice.jpeg',
         videoSrc: '',
         categorieIds: [5, 6, 7, 25]
 
@@ -89,7 +89,7 @@ export class MoviesService {
         year: 2004,
         description: 'very good movie',
         rating: 9.2,
-        imageSrc: './assets/kevin.jpg',
+        imageSrc: 'http://localhost:4200/assets/kevin.jpg',
         videoSrc: '',
         categorieIds: [5, 6, 7, 25]
 
@@ -102,7 +102,7 @@ export class MoviesService {
         year: 2004,
         description: 'very good movie',
         rating: 9.2,
-        imageSrc: './assets/painglory.jpg',
+        imageSrc: 'http://localhost:4200/assets/painglory.jpg',
         videoSrc: '',
         categorieIds: [5, 6, 7, 25]
 
@@ -115,7 +115,7 @@ export class MoviesService {
         year: 2004,
         description: 'very good movie',
         rating: 9.2,
-        imageSrc: './assets/moonlight.jpg',
+        imageSrc: 'http://localhost:4200/assets/moonlight.jpg',
         videoSrc: '',
         categorieIds: [5, 6, 7, 25]
 
@@ -128,7 +128,7 @@ export class MoviesService {
         year: 2004,
         description: 'very good movie',
         rating: 9.2,
-        imageSrc: './assets/vicky.jpg',
+        imageSrc: 'http://localhost:4200/assets/vicky.jpg',
         videoSrc: 'https://s4114-03.imovies.cc/video/imovie_hash_code/3/2017050402170742_high_eng.mp4?md5=Myi2OsQVsa-cylCjVsRvzw&expires=1605458951&data=YTozOntzOjc6InVzZXJfaXAiO3M6MTI6IjQ2LjQ5LjgwLjE1MSI7czoxMDoidXNlcl9hZ2VudCI7czoxMTU6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS84Ni4wLjQyNDAuMTk4IFNhZmFyaS81MzcuMzYiO3M6NzoicmVmZXJlciI7czoyMzoiaHR0cHM6Ly93d3cuaW1vdmllcy5jYy8iO30=',
         categorieIds: [5, 6, 7, 25]
 
@@ -164,6 +164,12 @@ export class MoviesService {
 
             return e.categorieIds.includes(categoryId)
         })
+    }
+
+    addMovie(movie: Partial<Movie>): void {
+        movie.id = this.movies.length + 1;
+        movie.rating = 0;
+        this.movies.push(movie as Movie)
     }
 
 }

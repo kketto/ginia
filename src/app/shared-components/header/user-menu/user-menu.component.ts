@@ -1,4 +1,3 @@
-import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
@@ -23,17 +22,18 @@ export class UserMenuComponent implements OnInit {
 
     }
 
-    onAvatar(): void {
+    onAvatar(e: MouseEvent): void {
+        e.stopPropagation();
+        this.isUserMenuVisible = !this.isUserMenuVisible;
+    }
 
-        this.isUserMenuVisible = true;
+    onClose(): void {
+        this.isUserMenuVisible = false;
     }
 
     onSignOut(): void {
         this.userService.signOut();
+        this.onClose();
     }
-    //დახურვა
-
-
-
 
 }

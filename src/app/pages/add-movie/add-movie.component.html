@@ -1,14 +1,20 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (submit)="onSubmit()">
 
     <h1>დაამატე ფილმი</h1>
 
     <input class="title" formControlName="title" type="text" placeholder="სათაური">
     <input formControlName="imageSrc" type="text" placeholder="პოსტერის ლინკი">
     <input formControlName="videoSrc" type="text" placeholder="ვიდეოს ლინკი">
-    <input formControlName="categorieIds" placeholder="აირჩიე კატეგორია">
+    <ng-select formControlName="categorieIds" [items]="categories" bindLabel="label" bindValue="id" [multiple]="true"
+        [closeOnSelect]="false" placeholder="აირჩიე კატეგორია">
+    </ng-select>
+
     <input formControlName="year" type="number" placeholder="წელი">
     <input formControlName="director" type="text" placeholder="რეჟისორი">
-    <input formControlName="cast" placeholder="მსახიობები">
+    <ng-select formControlName="cast" [multiple]="true" [clearSearchOnAdd]="true" [closeOnSelect]="false"
+        placeholder="მსახიობები" [addTag]="true" addTagText="დამატება">
+    </ng-select>
+
     <textarea formControlName="description" placeholder="აღწერა"></textarea>
 
     <button type="submit">დამატება</button>

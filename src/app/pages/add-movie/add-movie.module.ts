@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
 import { AddMovieComponent } from './add-movie.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const ROUTES: Route[] = [
     {
@@ -18,7 +19,8 @@ const ROUTES: Route[] = [
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        RouterModule.forChild(ROUTES)
+        RouterModule.forChild(ROUTES),
+        NgSelectModule
     ],
     providers: [],
 })

@@ -1,10 +1,9 @@
 .container {
-
     display: flex;
+    margin-bottom: 10px;
 
 }
 .items {
-
     display: flex;
     flex-wrap: wrap;
     align-content: start;
@@ -19,7 +18,6 @@ app-feed-item{
     top: 60px;
     height: calc(100vh - 70px);
     overflow: auto;
-
 
     
 &::-webkit-scrollbar-track

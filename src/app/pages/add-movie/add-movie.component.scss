@@ -3,6 +3,7 @@ form{
     width: 100%;
     flex-direction: column;
     align-items: center;
+    background-color: #f0e9f1;
 }
 
 h1{
@@ -13,16 +14,24 @@ h1{
         margin-top: 25px;
 }
 
+ng-select{
+    min-width: 400px;
+    width: 30%;
+    margin: 10px;
+    outline-style: none;
+}
 
 input{
+    min-width: 400px;
     width: 30%;
     height: 40px;
     margin: 10px;
     border-radius: 10px;
     border-style: solid;
-    border-width: revert;
+    border-width: 2px;
     padding: 5px;
     outline-style: none;
+    background-color: #f0e9f1;
     border-color: #e1dbdb;
    
     &:focus {
@@ -33,16 +42,23 @@ input{
 }
 
 textarea {
-    width: 40%;
+    min-width: 400px;
+    width: 30%;
     height: 95px;
-    margin-left: 110px;
     resize: none;
     border-radius: 10px;
     border-style: solid;
-    border-width: revert;
+    border-width: 2px;
     padding: 5px;
     outline-style: none;
     border-color: #e1dbdb;
+    background-color: #f0e9f1;
+
+    &:focus {
+
+        background-color: #f7f0fa;
+
+    }
 }
 
 button{
@@ -53,6 +69,8 @@ button{
     background-color: #630c5b;
     color: #eade91;
     font-weight: 600;
+    outline-style: none;
     border-radius: 15px;
+    cursor: pointer;
 }
 
