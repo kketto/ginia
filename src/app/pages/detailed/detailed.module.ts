@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { DetailedComponent } from './detailed.component';
+import { BarRatingModule } from "ngx-bar-rating";
+
 
 const ROUTES: Route[] = [
     {
@@ -16,7 +18,8 @@ const ROUTES: Route[] = [
     ],
     imports: [
         CommonModule,
-        RouterModule.forChild(ROUTES)
+        RouterModule.forChild(ROUTES),
+        BarRatingModule
     ],
     providers: [],
 })

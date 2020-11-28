@@ -9,6 +9,7 @@ export interface Movie {
     cast: string[];
     description: string;
     rating: number;
+    rateCount?: number;
     videoSrc: string;
     categorieIds: number[];
 

@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@ng-select/ng-select/themes/default.theme.css";
+@import "./assets/scss/rating.scss";
 
 .ng-invalid.ng-touched{
     border-color:#d11c93;

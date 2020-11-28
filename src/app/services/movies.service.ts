@@ -44,4 +44,31 @@ export class MoviesService {
         this.localStorageService.setItem("movies", this.movies);
     }
 
+    editMovie(id: number, movie: Partial<Movie>): void {
+        let editMovie = this.getMovieById(id);
+        editMovie.title = movie.title;
+        editMovie.videoSrc = movie.videoSrc;
+        editMovie.imageSrc = movie.imageSrc;
+        editMovie.year = movie.year;
+        editMovie.cast = movie.cast;
+        editMovie.director = movie.director;
+        editMovie.description = movie.description;
+        editMovie.categorieIds = movie.categorieIds;
+
+        this.localStorageService.setItem("movies", this.movies);
+    }
+
+    changeRate(id: number, rate: number): void {
+        const movie = this.getMovieById(id);
+        const rateCount = movie.rateCount || 0;
+
+        movie.rateCount = rateCount + 1;
+        movie.rating = (movie.rating * rateCount + rate) / movie.rateCount
+
+        this.localStorageService.setItem("movies", this.movies)
+
+        console.log(movie.rating)
+
+    }
+
 }

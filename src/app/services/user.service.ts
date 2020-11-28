@@ -15,7 +15,7 @@ export class UserService {
     constructor(private cookiesService: CookiesService, private router: Router) { }
 
     singIn(userName: string, password: string): boolean {
-        if (userName === "keti" && password === "soso") {
+        if ((userName === "keti" || userName === "soso") && password === "soso") {
             this.user = userName;
             this.cookiesService.set('userName', userName, 10);
             // this._signedIn$.next(true);
@@ -30,7 +30,7 @@ export class UserService {
         this.user = null;
         // this._signedIn$.next(false);
         this.cookiesService.delete('userName');
-        this.router.navigate(['']);
+        // this.router.navigate(['']);
     }
 
 }

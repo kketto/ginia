@@ -1,6 +1,7 @@
-import { Component, } from '@angular/core';
+import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { MoviesService } from 'src/app/services/movies.service';
 import { Movie } from 'src/app/shared-components/feed/feed.component';
@@ -11,25 +12,39 @@ import { Movie } from 'src/app/shared-components/feed/feed.component';
     templateUrl: './add-movie.component.html',
     styleUrls: ['./add-movie.component.scss']
 })
-export class AddMovieComponent {
+export class AddMovieComponent implements OnInit, OnDestroy {
 
     form: FormGroup;
+    subscriber: Subscription;
+    editId: number;
 
     categories = this.categoriesService.getCategories();
 
-    constructor(private formbuilder: FormBuilder, private categoriesService: CategoriesService, private router: Router, private moviesServise: MoviesService) { }
+    constructor(private formbuilder: FormBuilder, private route: ActivatedRoute, private categoriesService: CategoriesService,
+        private router: Router, private moviesServise: MoviesService) { }
+
 
     ngOnInit(): void {
-        this.form = this.formbuilder.group({
-            title: ['', Validators.required],
-            imageSrc: ['', Validators.required],
-            videoSrc: ['', Validators.required],
-            categorieIds: [[], Validators.required],
-            year: ['', [Validators.required, Validators.min(1800), Validators.max(2200)]],
-            director: ['', Validators.required],
-            cast: [[]],
-            description: ['', Validators.required],
-        });
+
+        this.subscriber = this.route.params.subscribe((params) => {
+            let movie: Movie;
+
+            if (params.id) {
+                this.editId = +params.id;
+                movie = this.moviesServise.getMovieById(this.editId);
+            }
+
+            this.form = this.formbuilder.group({
+                title: [movie?.title || '', Validators.required],
+                imageSrc: [movie?.imageSrc || '', Validators.required],
+                videoSrc: [movie?.videoSrc || '', Validators.required],
+                categorieIds: [movie?.categorieIds || [], Validators.required],
+                year: [movie?.year || '', [Validators.required, Validators.min(1800), Validators.max(2200)]],
+                director: [movie?.director || '', Validators.required],
+                cast: [movie?.cast || []],
+                description: [movie?.description || '', Validators.required],
+            });
+        })
     }
 
     onSubmit(): void {
@@ -38,12 +53,23 @@ export class AddMovieComponent {
             return;
         }
 
+
         let formValue = this.form.getRawValue();
         formValue.cast = formValue.cast.map(e => e.label);
 
-        this.moviesServise.addMovie(formValue as Partial<Movie>);
+        if (this.editId) {
+            this.moviesServise.editMovie(this.editId, formValue as Partial<Movie>);
+        }
+        else {
+            this.moviesServise.addMovie(formValue as Partial<Movie>);
+
+        }
 
         this.router.navigate(['/']);
     }
 
+
+    ngOnDestroy(): void {
+        this.subscriber.unsubscribe();
+    }
 }

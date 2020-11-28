@@ -1,6 +1,6 @@
 <form [formGroup]="form" (submit)="onSubmit()">
 
-    <h1>დაამატე ფილმი</h1>
+    <h1>ფილმის {{editId ? 'რედაქტირება':'დამატება'}}</h1>
 
     <input class="title" formControlName="title" type="text" placeholder="სათაური">
     <input formControlName="imageSrc" type="text" placeholder="პოსტერის ლინკი">
@@ -17,7 +17,7 @@
 
     <textarea formControlName="description" placeholder="აღწერა"></textarea>
 
-    <button type="submit">დამატება</button>
+    <button type="submit">{{editId ? 'განახლება':'დამატება'}}</button>
 
 
 </form>

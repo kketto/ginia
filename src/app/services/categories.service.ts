@@ -144,5 +144,15 @@ export class CategoriesService {
 
     }
 
+    getCategoryLabelByID(id: number): string {
+
+        return this.categories.find(e => e.id === id).label
+
+    }
+
+    getLabelsFromIds(ids: number[]): string[] {
+        return ids.map(id => this.getCategoryLabelByID(id));
+    }
+
 
 }

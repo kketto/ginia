@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [{
@@ -8,14 +9,25 @@ const routes: Routes = [{
 },
 {
   path: 'movie',
-  canActivate: [AuthGuard],
-  loadChildren: () => import('./pages/detailed/detailed.module').then(m => m.DetailedModule)
+  children: [
+    {
+      path: '',
+      loadChildren: () => import('./pages/detailed/detailed.module').then(m => m.DetailedModule)
+    },
+    {
+      path: 'add',
+      canActivate: [AuthGuard, AdminGuard],
+      loadChildren: () => import('./pages/add-movie/add-movie.module').then(m => m.AddMovieModule)
+    },
+    {
+      path: 'edit/:id',
+      canActivate: [AuthGuard, AdminGuard],
+      loadChildren: () => import('./pages/add-movie/add-movie.module').then(m => m.AddMovieModule)
+
+    }
+  ]
 },
-{
-  path: 'add-movie',
-  canActivate: [AuthGuard],
-  loadChildren: () => import('./pages/add-movie/add-movie.module').then(m => m.AddMovieModule)
-},
+
 {
   path: ':category',
   loadChildren: () => import('./pages/category-detail/category-detail.module').then(m => m.CategoryDetailModule)
