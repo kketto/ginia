@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { DetailedComponent } from './detailed.component';
+import { MovieDetailedComponent } from './movie-detailed.component';
 import { BarRatingModule } from "ngx-bar-rating";
 
 
 const ROUTES: Route[] = [
     {
         path: ':id',
-        component: DetailedComponent
+        component: MovieDetailedComponent
     }
 ]
 
 @NgModule({
     declarations: [
-        DetailedComponent
+        MovieDetailedComponent
     ],
     imports: [
         CommonModule,
@@ -23,4 +23,4 @@ const ROUTES: Route[] = [
     ],
     providers: [],
 })
-export class DetailedModule { }
+export class MovieDetailedModule { }

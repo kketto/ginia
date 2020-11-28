@@ -8,11 +8,11 @@ import { Movie } from 'src/app/shared-components/feed/feed.component';
 
 
 @Component({
-    selector: 'app-add-movie',
-    templateUrl: './add-movie.component.html',
-    styleUrls: ['./add-movie.component.scss']
+    selector: 'app-movie-add',
+    templateUrl: './movie-add.component.html',
+    styleUrls: ['./movie-add.component.scss']
 })
-export class AddMovieComponent implements OnInit, OnDestroy {
+export class MovieAddComponent implements OnInit, OnDestroy {
 
     form: FormGroup;
     subscriber: Subscription;

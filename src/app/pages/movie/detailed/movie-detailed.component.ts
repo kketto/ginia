@@ -8,11 +8,11 @@ import { MoviesService } from 'src/app/services/movies.service';
 import { Movie } from 'src/app/shared-components/feed/feed.component';
 
 @Component({
-    selector: 'app-detailed',
-    templateUrl: './detailed.component.html',
-    styleUrls: ['./detailed.component.scss']
+    selector: 'app-movie-detailed',
+    templateUrl: './movie-detailed.component.html',
+    styleUrls: ['./movie-detailed.component.scss']
 })
-export class DetailedComponent implements OnInit, OnDestroy {
+export class MovieDetailedComponent implements OnInit, OnDestroy {
     movie: Movie;
     cast: string;
     categoryLabels: string;

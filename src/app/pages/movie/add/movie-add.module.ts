@@ -2,19 +2,19 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
-import { AddMovieComponent } from './add-movie.component';
+import { MovieAddComponent } from './movie-add.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 const ROUTES: Route[] = [
     {
         path: '',
-        component: AddMovieComponent
+        component: MovieAddComponent
     }
 ]
 
 @NgModule({
     declarations: [
-        AddMovieComponent
+        MovieAddComponent
     ],
     imports: [
         CommonModule,
@@ -24,4 +24,4 @@ const ROUTES: Route[] = [
     ],
     providers: [],
 })
-export class AddMovieModule { }
+export class MovieAddModule { }
