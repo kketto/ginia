@@ -6,13 +6,13 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
     {
-        path: '',
-        loadChildren: () => import('./detailed/movie-detailed.module').then(m => m.MovieDetailedModule)
-    },
-    {
         path: 'add',
         canActivate: [AuthGuard, AdminGuard],
         loadChildren: () => import('./add/movie-add.module').then(m => m.MovieAddModule)
+    },
+    {
+        path: ':id',
+        loadChildren: () => import('./detailed/movie-detailed.module').then(m => m.MovieDetailedModule)
     },
     {
         path: 'edit/:id',

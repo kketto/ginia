@@ -7,7 +7,7 @@ import { BarRatingModule } from "ngx-bar-rating";
 
 const ROUTES: Route[] = [
     {
-        path: ':id',
+        path: '',
         component: MovieDetailedComponent
     }
 ]

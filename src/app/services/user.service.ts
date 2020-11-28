@@ -4,13 +4,20 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { CookiesService } from './cookies.service';
 
 @Injectable({ providedIn: 'root' })
-
 export class UserService {
+    private _user: any;
 
-    // private _signedIn$ = new BehaviorSubject<boolean>(false);
-    // signedIn$ = this._signedIn$.asObservable();
+    set user(value: any) {
+        this._user = value;
+        this._$user.next(value);
+    }
 
-    user: any;
+    get user(): any {
+        return this._user;
+    }
+
+    private _$user = new BehaviorSubject<string>(null);
+    $user = this._$user.asObservable();
 
     constructor(private cookiesService: CookiesService, private router: Router) { }
 
@@ -18,7 +25,6 @@ export class UserService {
         if ((userName === "keti" || userName === "soso") && password === "soso") {
             this.user = userName;
             this.cookiesService.set('userName', userName, 10);
-            // this._signedIn$.next(true);
             return true;
 
         }
@@ -28,7 +34,6 @@ export class UserService {
 
     signOut(): void {
         this.user = null;
-        // this._signedIn$.next(false);
         this.cookiesService.delete('userName');
         // this.router.navigate(['']);
     }

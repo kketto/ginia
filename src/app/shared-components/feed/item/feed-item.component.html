@@ -7,7 +7,7 @@
             {{movie.title}}
         </p>
         <p>
-            {{movie.rating}}
+            {{+movie.rating | number : '1.0-2'}}
         </p>
     </span>
 
