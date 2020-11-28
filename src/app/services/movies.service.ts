@@ -5,7 +5,7 @@ import { LocalStorageService } from './local-storage.service';
 @Injectable({ providedIn: 'root' })
 export class MoviesService {
 
-    private movies: Movie[] = this.localStorageService.getItem("movies");
+    private movies: Movie[] = this.localStorageService.getItem("movies") || [];
 
     constructor(private localStorageService: LocalStorageService) { }
 
