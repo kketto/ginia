@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { MoviesService } from 'src/app/services/movies.service';
 import { Category } from 'src/app/shared-components/feed/categories/categories.component';
@@ -14,12 +15,12 @@ import { Movie } from 'src/app/shared-components/feed/feed.component';
 export class CategoryDetailComponent implements OnInit, OnDestroy {
 
     categoryMovies: Movie[];
-    subscriber: Subscription;
+    private $unsubscribe = new Subject<void>();
 
     constructor(private movieService: MoviesService, private route: ActivatedRoute, private categoriesService: CategoriesService) { }
 
     ngOnInit(): void {
-        this.subscriber = this.route.params.subscribe((params) => {
+        this.route.params.pipe(takeUntil(this.$unsubscribe)).subscribe((params) => {
             const categoryName = params.category as string;
             const categoryId = this.categoriesService.getCategoryBySlug(categoryName).id;
             this.categoryMovies = this.movieService.getMoviesByCategoryId(categoryId)
@@ -28,7 +29,8 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.subscriber.unsubscribe();
+        this.$unsubscribe.next();
+        this.$unsubscribe.complete();
     }
 
 }

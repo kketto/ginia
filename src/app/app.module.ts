@@ -5,12 +5,10 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './shared-components/header/header.module';
 import { FooterModule } from './shared-components/footer/footer.module';
 import { PopupModule } from './shared-components/popup/popup.module';
-import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ClickOutsideDirective
+    AppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
