@@ -1,9 +1,5 @@
 <ul>
-
-
-
     <li *ngFor="let item of categories">
         <a [routerLink]="['/',item.slug]" routerLinkActive="active">{{item.label}}</a>
     </li>
-
 </ul>

@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ClickOutsideModule } from 'src/app/directives/click-outside.module';
 import { SearchModule } from '../search/search.module';
 import { SignInModule } from '../sign-in/sign-in.module';
+import { SignUpModule } from '../sign-up/sign-up.module';
 import { HeaderComponent } from './header.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 
@@ -18,6 +19,7 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
         RouterModule,
         SearchModule,
         SignInModule,
+        SignUpModule,
         ClickOutsideModule
     ],
     providers: [],

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { MoviesService } from 'src/app/services/movies.service';
 import { Category } from 'src/app/shared-components/feed/categories/categories.component';
@@ -22,8 +22,10 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.params.pipe(takeUntil(this.$unsubscribe)).subscribe((params) => {
             const categoryName = params.category as string;
-            const categoryId = this.categoriesService.getCategoryBySlug(categoryName).id;
-            this.categoryMovies = this.movieService.getMoviesByCategoryId(categoryId)
+
+            this.categoriesService.getCategoryBySlug(categoryName).subscribe((cat) => {
+                this.categoryMovies = cat.movies;
+            })
         })
 
     }

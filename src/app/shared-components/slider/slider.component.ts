@@ -63,6 +63,7 @@ export class SliderComponent implements OnChanges, OnInit, OnDestroy {
     }
 
 
+
     ngOnDestroy(): void {
         clearTimeout(this.timeout);
     }

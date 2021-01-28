@@ -9,6 +9,7 @@ export class AuthGuard implements CanActivate {
 
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        this.userService.saveDecodedToken();
         if (!this.userService.user) {
             this.router.navigate(['/']);
             this.popupService.openSignInPopup();

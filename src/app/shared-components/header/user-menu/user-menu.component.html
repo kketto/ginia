@@ -7,7 +7,7 @@
 
 <div (clickOutside)="onClose()" class="menu" *ngIf="isUserMenuVisible">
     <ul>
-        <li>
+        <li *ngIf="isAdmin">
             <a routerLink="movie/add" (click)="onClose()">ფილმის დამატება</a>
         </li>
         <li>

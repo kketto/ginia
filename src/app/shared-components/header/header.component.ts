@@ -14,4 +14,8 @@ export class HeaderComponent {
     onSignIn(): void {
         this.popupService.openSignInPopup();
     }
+
+    onSignUp(): void {
+        this.popupService.openSignUpPopup();
+    }
 }

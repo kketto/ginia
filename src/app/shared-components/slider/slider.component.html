@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="slides?.length">
     <button class="left" (click)="onPrevious()">
         < </button>
             <a [routerLink]="activeSlide.path" [style.backgroundImage]="'url('+ activeSlide.src +')'">

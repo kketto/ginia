@@ -9,7 +9,7 @@
     <div *ngIf="!userService.user" class="login">
 
         <button (click)="onSignIn()">Sign In</button>
-        <a href="#">Sign Up</a>
+        <button (click)="onSignUp()">Sign Up</button>
     </div>
 
     <div *ngIf="userService.user" class="login">

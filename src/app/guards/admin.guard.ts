@@ -16,6 +16,6 @@ export class AdminGuard implements CanActivate {
     }
 
     isAdmin(): boolean {
-        return this.userService.user && this.userService.user === "keti";
+        return this.userService.user && (this.userService.user.role == 2 || this.userService.user.role == 3);
     }
 }

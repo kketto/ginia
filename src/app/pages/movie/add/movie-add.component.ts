@@ -18,32 +18,47 @@ export class MovieAddComponent implements OnInit, OnDestroy {
     subscriber: Subscription;
     editId: number;
 
-    categories = this.categoriesService.getCategories();
+    categories;
 
     constructor(private formbuilder: FormBuilder, private route: ActivatedRoute, private categoriesService: CategoriesService,
         private router: Router, private moviesServise: MoviesService) { }
 
 
     ngOnInit(): void {
+        this.categoriesService.getCategories().subscribe(c => {
+            this.categories = c;
+        })
 
         this.subscriber = this.route.params.subscribe((params) => {
-            let movie: Movie;
 
             if (params.id) {
                 this.editId = +params.id;
-                movie = this.moviesServise.getMovieById(this.editId);
+                this.moviesServise.getMovieById(this.editId).subscribe((movie: Movie) => {
+                    this.form = this.formbuilder.group({
+                        title: [movie?.title || '', Validators.required],
+                        imageSrc: [movie?.imageSrc || '', Validators.required],
+                        videoSrc: [movie?.videoSrc || '', Validators.required],
+                        categorieIds: [movie?.categories.map(c => c.id) || [], Validators.required],
+                        year: [movie?.year || '', [Validators.required, Validators.min(1800), Validators.max(2200)]],
+                        director: [movie?.director || '', Validators.required],
+                        cast: [movie?.cast || []],
+                        description: [movie?.description || '', Validators.required],
+                    });
+                });
+            } else {
+
+                this.form = this.formbuilder.group({
+                    title: ['', Validators.required],
+                    imageSrc: ['', Validators.required],
+                    videoSrc: ['', Validators.required],
+                    categorieIds: [[], Validators.required],
+                    year: ['', [Validators.required, Validators.min(1800), Validators.max(2200)]],
+                    director: ['', Validators.required],
+                    cast: [[]],
+                    description: ['', Validators.required],
+                });
             }
 
-            this.form = this.formbuilder.group({
-                title: [movie?.title || '', Validators.required],
-                imageSrc: [movie?.imageSrc || '', Validators.required],
-                videoSrc: [movie?.videoSrc || '', Validators.required],
-                categorieIds: [movie?.categorieIds || [], Validators.required],
-                year: [movie?.year || '', [Validators.required, Validators.min(1800), Validators.max(2200)]],
-                director: [movie?.director || '', Validators.required],
-                cast: [movie?.cast || []],
-                description: [movie?.description || '', Validators.required],
-            });
         })
     }
 

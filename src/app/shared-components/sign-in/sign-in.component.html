@@ -1,8 +1,8 @@
 <form [formGroup]="form" (submit)="onSignIn()">
 
-    <input formControlName="userName" type="text" placeholder="მომხმარებლის სახელი">
+    <input formControlName="userName" type="text" placeholder="მომხმარებლის სახელი" autocomplete="username">
 
-    <input formControlName="password" type="password" placeholder="პაროლი">
+    <input formControlName="password" type="password" placeholder="პაროლი" autocomplete="current-password">
 
     <div class="rememberMe">
         <label for="rememberMe">დამახსოვრება</label>
@@ -12,7 +12,7 @@
 
     <div>
         <a href="#">დაგავიწყდა პაროლი?</a>
-        <button type="submit">შესვლა</button>
+        <button type="submit" [disabled]="form.invalid">შესვლა</button>
     </div>
 
 </form>

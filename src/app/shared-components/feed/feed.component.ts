@@ -6,13 +6,13 @@ export interface Movie {
     imageSrc: string;
     director: string;
     year: number;
-    cast: string[];
+    cast: any;
     description: string;
     rating: number;
     rateCount?: number;
     videoSrc: string;
     categorieIds: number[];
-
+    categories?: any[];
 }
 
 

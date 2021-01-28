@@ -9,14 +9,9 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private cookiesService: CookiesService, private userService: UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-
-    this.userService.user = this.cookiesService.get("userName")
-
+    this.userService.saveDecodedToken();
   }
-
-
-
 }

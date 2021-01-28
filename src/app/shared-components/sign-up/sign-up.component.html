@@ -1,0 +1,22 @@
+<form [formGroup]="form" (submit)="onSignUp()">
+    <span *ngIf="error" style="color: red;">მგონი ცოტა დებილი ხარ</span>
+
+    <input formControlName="userName" type="text" placeholder="მომხმარებლის სახელი" autocomplete="username">
+    <input formControlName="fullName" type="text" placeholder="სახელი" autocomplete="fullname">
+
+    <input formControlName="password" type="password" placeholder="პაროლი" autocomplete="new-password">
+    <input formControlName="confirmPassword" type="password" placeholder="დაადასტურე პაროლი"
+        autocomplete="new-password">
+
+
+    <div class="terms">
+        <label for="terms">ვეთანხმები</label>
+        <input formControlName="terms" id="terms" type="checkbox">
+    </div>
+
+
+    <div>
+        <button type="submit">რეგისტრაცია</button>
+    </div>
+
+</form>

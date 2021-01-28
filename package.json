@@ -27,6 +27,7 @@
     "@ng-select/ng-select": "^5.0.9",
     "@nguniversal/express-engine": "^11.0.0",
     "express": "^4.15.2",
+    "jwt-decode": "^3.1.2",
     "ngx-bar-rating": "^2.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

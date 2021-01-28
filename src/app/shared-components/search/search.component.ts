@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MoviesService } from 'src/app/services/movies.service';
 import { Movie } from '../feed/feed.component';
-import { debounceTime, filter, map, pluck } from 'rxjs/operators'
-import { Subscription } from 'rxjs';
+import { debounceTime, filter, map, pluck, takeUntil } from 'rxjs/operators'
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-search',
@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     searchedMovies: Movie[];
 
-    private subscriber: Subscription;
+    private $unsubscribe = new Subject<void>();
 
     constructor(private formBuilder: FormBuilder, private moviesService: MoviesService) { }
 
@@ -23,9 +23,10 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.form = this.formBuilder.group({
             term: ['', [Validators.required, Validators.minLength(2)]]
         });
-        this.subscriber = this.form.valueChanges.pipe(
+        this.form.valueChanges.pipe(
             debounceTime(500),
             pluck('term'),
+            takeUntil(this.$unsubscribe)
         ).subscribe((termValue) => { this.onSearch(termValue) });
     }
 
@@ -34,7 +35,11 @@ export class SearchComponent implements OnInit, OnDestroy {
             this.searchedMovies = [];
             return;
         }
-        this.searchedMovies = this.moviesService.searchMovie(termValue);
+        this.moviesService.searchMovie(termValue)
+            .pipe(takeUntil(this.$unsubscribe))
+            .subscribe(movie => {
+                this.searchedMovies = movie;
+            });
     }
 
     onBackdrop(): void {
@@ -47,6 +52,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.subscriber.unsubscribe();
+        this.$unsubscribe.next();
+        this.$unsubscribe.complete();
     }
 }

@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { CookiesService } from './cookies.service';
+import jwt_decode from "jwt-decode";
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -19,23 +21,31 @@ export class UserService {
     private _$user = new BehaviorSubject<string>(null);
     $user = this._$user.asObservable();
 
-    constructor(private cookiesService: CookiesService, private router: Router) { }
+    constructor(private cookiesService: CookiesService, private http: HttpClient) { }
 
-    singIn(userName: string, password: string): boolean {
-        if ((userName === "keti" || userName === "soso") && password === "soso") {
-            this.user = userName;
-            this.cookiesService.set('userName', userName, 10);
-            return true;
+    singIn(userName: string, password: string): Observable<string> {
+        return this.http.get<string>("http://localhost:3000/login", { params: { userName, password } }).pipe(tap(token => {
+            this.saveDecodedToken(token)
+        }));
 
-        }
+    }
 
-        return false;
+    signUp(body: { userName: string; password: string; fullName: string }): Observable<any> {
+        return this.http.post("http://localhost:3000/register", body)
     }
 
     signOut(): void {
         this.user = null;
-        this.cookiesService.delete('userName');
+        this.cookiesService.delete('token');
         // this.router.navigate(['']);
     }
 
+    saveDecodedToken(token?: string): void {
+        if (!token) {
+            token = this.cookiesService.get("token");
+        }
+        if (token) {
+            this.user = jwt_decode(token);
+        }
+    }
 }

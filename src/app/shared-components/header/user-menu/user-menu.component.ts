@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminGuard } from 'src/app/guards/admin.guard';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,17 +10,17 @@ import { UserService } from 'src/app/services/user.service';
 export class UserMenuComponent implements OnInit {
 
     userName: string;
+    isAdmin: boolean;
 
     isUserMenuVisible: boolean;
 
 
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService, private admin: AdminGuard) { }
 
 
     ngOnInit(): void {
-
-        this.userName = this.userService.user;
-
+        this.userName = this.userService.user.fullName;
+        this.isAdmin = this.admin.isAdmin();
     }
 
     onAvatar(e: MouseEvent): void {

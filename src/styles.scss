@@ -3,7 +3,7 @@
 @import "./assets/scss/rating.scss";
 
 .ng-invalid.ng-touched{
-    border-color:#d11c93;
+    border-color:#d11c93 !important;
     &> .ng-select-container{
         border-color: #d11c93;
     }

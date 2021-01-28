@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './shared-components/header/header.module';
 import { FooterModule } from './shared-components/footer/footer.module';
 import { PopupModule } from './shared-components/popup/popup.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PopupModule } from './shared-components/popup/popup.module';
     AppRoutingModule,
     HeaderModule,
     FooterModule,
-    PopupModule
+    PopupModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

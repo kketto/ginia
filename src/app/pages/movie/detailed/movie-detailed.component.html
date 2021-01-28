@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="movie" class="container">
 
     <img [src]="movie.imageSrc" [alt]="movie.title">
 
@@ -33,7 +33,7 @@
 
 </div>
 
-<video controls>
+<video *ngIf="movie" controls>
     <source [src]="movie.videoSrc" type="video/mp4">
 
     Your browser does not support the video tag.
