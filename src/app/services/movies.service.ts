@@ -32,20 +32,12 @@ export class MoviesService {
 
     }
 
-    addMovie(movie: Partial<Movie>): void {
-        movie.id = this.movies.length + 1;
-        movie.rating = 0;
-
-        let headers = new HttpHeaders({ 'Authorization': this.cookiesService.get("token") });
-        this.http.post('http://localhost:3000/movies', movie, { headers }).subscribe((r) => {
-        });
-        this.movies.push(movie as Movie);
-        this.localStorageService.setItem("movies", this.movies);
+    addMovie(movie: Partial<Movie>): Observable<Movie> {
+        return this.http.post<Movie>('http://localhost:3000/movies', movie)
     }
 
-    editMovie(id: number, movie: Partial<Movie>): void {
-        this.http.put(`http://localhost:3000/movies/${id}`, movie).subscribe((r) => {
-        })
+    editMovie(id: number, movie: Partial<Movie>): Observable<Movie> {
+        return this.http.put<Movie>(`http://localhost:3000/movies/${id}`, movie);
     }
 
     changeRate(id: number, rate: number): void {

@@ -1,19 +1,21 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Category } from '../shared-components/feed/categories/categories.component';
 
 @Injectable({ providedIn: 'root' })
 export class CategoriesService {
+    private _$getCategories = new BehaviorSubject<Category[]>([]);
+    $getCategories = this._$getCategories.asObservable();
+
     constructor(private http: HttpClient) { }
 
-    private categories: Category[];
 
-    getCategories(): Observable<Category[]> {
-        return this.http.get<Category[]>('http://localhost:3000/categories').pipe(tap(categories => {
-            this.categories = categories;
-        }));
+    dispatchGetCategories(): void {
+        this.http.get<Category[]>('http://localhost:3000/categories').subscribe((categories) => {
+            this._$getCategories.next(categories);
+        });
     }
 
     getCategoryBySlug(slug: string): Observable<Category> {
@@ -29,6 +31,15 @@ export class CategoriesService {
         // return ids.map(id => {
         //     return this.categories.find(e => e.id === id).label
         // });
+    }
+
+    addCategory(body) {
+        return this.http.post('http://localhost:3000/categories', body)
+    }
+
+    editCategory(id, body) {
+        return this.http.put('http://localhost:3000/categories/' + id, body)
+
     }
 
 

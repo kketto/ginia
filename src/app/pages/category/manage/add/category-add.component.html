@@ -1,0 +1,12 @@
+<form *ngIf="form" [formGroup]="form" (submit)="onSubmit()">
+
+    <span *ngIf="error" style="color: red;">მგონი ცოტა დებილი ვარ</span>
+
+    <input class="label" formControlName="label" type="text" placeholder="dasaxeleba">
+    <input formControlName="slug" type="text" placeholder="slug">
+
+
+    <button type="submit">{{editId ? 'განახლება':'დამატება'}}</button>
+
+
+</form>

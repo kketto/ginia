@@ -38,6 +38,9 @@ export class PopupComponent implements OnChanges, AfterViewInit, OnDestroy {
     @Input()
     component: Type<unknown>;
 
+    @Input()
+    additionalInputs: any;
+
     @Output()
     close = new EventEmitter<void>();
 
@@ -67,6 +70,7 @@ export class PopupComponent implements OnChanges, AfterViewInit, OnDestroy {
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.component);
 
         const viewContainerRef = this.container.createComponent(componentFactory);
+        (viewContainerRef.instance as any).additionalInputs = this.additionalInputs;
         viewContainerRef.changeDetectorRef.detectChanges();
         this.subscriber = (viewContainerRef.instance as any).close.subscribe(() => { this.onClose(); });
     }

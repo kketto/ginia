@@ -10,6 +10,9 @@
         <li *ngIf="isAdmin">
             <a routerLink="movie/add" (click)="onClose()">ფილმის დამატება</a>
         </li>
+        <li *ngIf="isAdmin">
+            <a routerLink="category/manage" (click)="onClose()">კატეგორიების მართვა</a>
+        </li>
         <li>
             <button type="button" (click)="onSignOut()">გასვლა</button>
         </li>

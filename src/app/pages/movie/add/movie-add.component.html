@@ -1,6 +1,7 @@
 <form *ngIf="form" [formGroup]="form" (submit)="onSubmit()">
 
     <h1>ფილმის {{editId ? 'რედაქტირება':'დამატება'}}</h1>
+    <span *ngIf="error" style="color: red;">მგონი ცოტა დებილი არის</span>
 
     <input class="title" formControlName="title" type="text" placeholder="სათაური">
     <input formControlName="imageSrc" type="text" placeholder="პოსტერის ლინკი">

@@ -19,15 +19,18 @@ export class MovieAddComponent implements OnInit, OnDestroy {
     editId: number;
 
     categories;
+    error: boolean;
 
     constructor(private formbuilder: FormBuilder, private route: ActivatedRoute, private categoriesService: CategoriesService,
         private router: Router, private moviesServise: MoviesService) { }
 
 
     ngOnInit(): void {
-        this.categoriesService.getCategories().subscribe(c => {
+        this.categoriesService.$getCategories.subscribe(c => {
             this.categories = c;
+
         })
+        this.categoriesService.dispatchGetCategories();
 
         this.subscriber = this.route.params.subscribe((params) => {
 
@@ -72,15 +75,20 @@ export class MovieAddComponent implements OnInit, OnDestroy {
         let formValue = this.form.getRawValue();
         formValue.cast = formValue.cast.map(e => e.label);
 
+        let chemodani;
+
         if (this.editId) {
-            this.moviesServise.editMovie(this.editId, formValue as Partial<Movie>);
+            chemodani = this.moviesServise.editMovie(this.editId, formValue as Partial<Movie>);
         }
         else {
-            this.moviesServise.addMovie(formValue as Partial<Movie>);
-
+            chemodani = this.moviesServise.addMovie(formValue as Partial<Movie>);
         }
 
-        this.router.navigate(['/']);
+        chemodani.subscribe(() => {
+            this.router.navigate(['/']);
+        }, () => {
+            this.error = true;
+        });
     }
 
 

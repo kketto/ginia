@@ -1,0 +1,7 @@
+<button class="add" (click)="onAdd()">დამატება</button>
+
+<ul>
+    <li *ngFor="let item of categories">
+        {{item.label}} <button (click)="onEdit(item)">Edit</button>
+    </li>
+</ul>

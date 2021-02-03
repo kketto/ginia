@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './shared-components/header/header.module';
 import { FooterModule } from './shared-components/footer/footer.module';
 import { PopupModule } from './shared-components/popup/popup.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,13 @@ import { HttpClientModule } from '@angular/common/http';
     PopupModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
