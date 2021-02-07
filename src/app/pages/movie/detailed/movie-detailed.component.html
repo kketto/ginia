@@ -5,7 +5,8 @@
     <div class="info">
         <div>
             <p>
-                {{movie.title}} <a *ngIf="isAdmin" [routerLink]="['/movie/edit', movie.id]">Edit</a>
+                {{movie.title}} <a *ngIf="isAdmin" [routerLink]="['/movie/edit', movie.id]">Edit</a> <button
+                    (click)="onDelete()">Delete</button>
             </p>
 
             <bar-rating [rate]="movie.rating" [max]="10" [readOnly]="false" theme="pokemon"

@@ -40,6 +40,10 @@ export class MoviesService {
         return this.http.put<Movie>(`http://localhost:3000/movies/${id}`, movie);
     }
 
+    deleteMovie(id: number) {
+        return this.http.delete(`http://localhost:3000/movies/${id}`);
+    }
+
     changeRate(id: number, rate: number): void {
         this.http.put(`http://localhost:3000/movies/${id}/changeRate`, { rate }).subscribe((r) => {
         });

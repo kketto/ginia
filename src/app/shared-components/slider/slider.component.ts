@@ -10,11 +10,19 @@ export interface Slide {
     templateUrl: './slider.component.html',
     styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnChanges, OnInit, OnDestroy {
+export class SliderComponent implements OnInit, OnDestroy {
 
+    private _slides: Slide[];
 
     @Input()
-    slides: Slide[];
+    set slides(value) {
+        this._slides = value;
+        this.activeSlide = value[0];
+    }
+
+    get slides() {
+        return this._slides;
+    }
 
     activeSlide: Slide;
 
@@ -22,13 +30,6 @@ export class SliderComponent implements OnChanges, OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.autoSlide();
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes.slides?.currentValue !== changes.slides?.previousValue) {
-            this.activeSlide = this.slides[0];
-        }
-
     }
 
     onNext(): void {

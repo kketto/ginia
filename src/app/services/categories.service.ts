@@ -1,7 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
 import { Category } from '../shared-components/feed/categories/categories.component';
 
 @Injectable({ providedIn: 'root' })
@@ -39,6 +38,11 @@ export class CategoriesService {
 
     editCategory(id, body) {
         return this.http.put('http://localhost:3000/categories/' + id, body)
+
+    }
+
+    deleteCategory(id) {
+        return this.http.delete('http://localhost:3000/categories/' + id)
 
     }
 

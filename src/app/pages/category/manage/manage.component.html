@@ -2,6 +2,6 @@
 
 <ul>
     <li *ngFor="let item of categories">
-        {{item.label}} <button (click)="onEdit(item)">Edit</button>
+        {{item.label}} <button (click)="onEdit(item)">Edit</button> <button (click)="onDelete(item.id)">Delete</button>
     </li>
 </ul>

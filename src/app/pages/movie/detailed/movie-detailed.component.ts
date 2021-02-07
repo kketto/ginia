@@ -1,10 +1,9 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { Subject, Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AdminGuard } from 'src/app/guards/admin.guard';
-import { CategoriesService } from 'src/app/services/categories.service';
 import { MoviesService } from 'src/app/services/movies.service';
 import { UserService } from 'src/app/services/user.service';
 import { Movie } from 'src/app/shared-components/feed/feed.component';
@@ -25,7 +24,8 @@ export class MovieDetailedComponent implements OnInit, OnDestroy {
         private movieService: MoviesService,
         private titleService: Title,
         private adminGuard: AdminGuard,
-        private userService: UserService) { }
+        private userService: UserService,
+        private router: Router,) { }
 
     ngOnInit(): void {
         this.userService.$user.pipe(takeUntil(this.$unsubscribe))
@@ -50,6 +50,14 @@ export class MovieDetailedComponent implements OnInit, OnDestroy {
 
     onRateChange(rate: number): void {
         this.movieService.changeRate(this.movie.id, rate);
+    }
+
+    onDelete() {
+        this.movieService.deleteMovie(this.movie.id)
+            .pipe(takeUntil(this.$unsubscribe))
+            .subscribe(() => {
+                this.router.navigate(['/'])
+            })
     }
 
     ngOnDestroy(): void {

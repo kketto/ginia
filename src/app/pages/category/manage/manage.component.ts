@@ -34,6 +34,14 @@ export class CategoryManageComponent implements OnInit, OnDestroy {
         this.popUpService.openAddCategoryPopup()
     }
 
+    onDelete(id: number) {
+        this.categoriesService.deleteCategory(id)
+            .pipe(takeUntil(this.$unsibscribe))
+            .subscribe(() => {
+                this.categoriesService.dispatchGetCategories();
+            });
+    }
+
 
     ngOnDestroy(): void {
 
