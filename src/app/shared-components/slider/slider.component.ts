@@ -16,8 +16,12 @@ export class SliderComponent implements OnInit, OnDestroy {
 
     @Input()
     set slides(value) {
-        this._slides = value;
-        this.activeSlide = value[0];
+        if (value) {
+
+            this._slides = value;
+            this.activeSlide = value[0];
+        }
+
     }
 
     get slides() {

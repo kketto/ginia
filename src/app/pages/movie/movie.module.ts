@@ -7,7 +7,8 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 const routes: Routes = [
     {
         path: 'add',
-        canActivate: [AuthGuard, AdminGuard],
+        canActivate: [AdminGuard],
+        canLoad: [AuthGuard],
         loadChildren: () => import('./add/movie-add.module').then(m => m.MovieAddModule)
     },
     {
